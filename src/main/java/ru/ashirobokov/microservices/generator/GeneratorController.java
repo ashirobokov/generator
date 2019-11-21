@@ -71,7 +71,7 @@ public class GeneratorController {
     @GetMapping(value = "/allprices", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<List<InstrumentPrice>> generateAllInstrumentListValuesBySchedule() {
         Flux<List<InstrumentPrice>> pricesFlux = Flux.create(sink -> {
-            ScheduledPrices.sent(sink, pricesCache);
+            ScheduledPrices.send(sink, pricesCache);
         });
         return pricesFlux;
     }
